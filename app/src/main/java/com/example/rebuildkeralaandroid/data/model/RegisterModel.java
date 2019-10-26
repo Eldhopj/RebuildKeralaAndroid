@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid.pojoModel;
+package com.example.rebuildkeralaandroid.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

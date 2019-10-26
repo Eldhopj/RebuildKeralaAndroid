@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid.pojoModel;
+package com.example.rebuildkeralaandroid.data.model;
 
 public class ApiResponse {
 

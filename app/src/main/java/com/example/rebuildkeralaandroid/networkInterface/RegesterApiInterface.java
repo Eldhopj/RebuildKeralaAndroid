@@ -1,6 +1,6 @@
 package com.example.rebuildkeralaandroid.networkInterface;
 
-import com.example.rebuildkeralaandroid.pojoModel.RegisterModel;
+import com.example.rebuildkeralaandroid.data.model.RegisterModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

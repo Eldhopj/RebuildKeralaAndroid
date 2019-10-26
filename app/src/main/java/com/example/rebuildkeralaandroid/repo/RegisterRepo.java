@@ -5,8 +5,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.rebuildkeralaandroid.pojoModel.ApiResponse;
-import com.example.rebuildkeralaandroid.pojoModel.RegisterModel;
+import com.example.rebuildkeralaandroid.data.model.ApiResponse;
+import com.example.rebuildkeralaandroid.data.model.RegisterModel;
 import com.example.rebuildkeralaandroid.utility.RetrofitClient;
 
 import org.jetbrains.annotations.NotNull;

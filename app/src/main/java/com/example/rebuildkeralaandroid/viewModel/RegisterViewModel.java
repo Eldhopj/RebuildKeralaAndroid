@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.rebuildkeralaandroid.pojoModel.ApiResponse;
+import com.example.rebuildkeralaandroid.data.model.ApiResponse;
 import com.example.rebuildkeralaandroid.repo.RegisterRepo;
 
 public class RegisterViewModel extends AndroidViewModel {
