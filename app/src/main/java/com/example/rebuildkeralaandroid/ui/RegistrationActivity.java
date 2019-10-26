@@ -90,7 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
             binding.password1.setError("Minimum 6 characters needed");
             return false;
         }
-        if (!Objects.equals(password1, password2))           // checking both passwords are similar
+        if (!Objects.equals(password1, password2)) // checking both passwords are similar
         {
             binding.password2.setError("Password Mismatches");
             return false;

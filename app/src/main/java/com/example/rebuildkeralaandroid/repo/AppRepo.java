@@ -14,18 +14,18 @@ import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class RegisterRepo {
+public class AppRepo {
     private static final String TAG = "UsersRepo";
-    private static RegisterRepo repoInstance;
+    private static AppRepo repoInstance;
     private final Application application;
 
-    private RegisterRepo(Application application) {
+    private AppRepo(Application application) {
         this.application = application;
     }
 
-    public static RegisterRepo getInstance(Application application) {
+    public static AppRepo getInstance(Application application) {
         if (repoInstance == null) {
-            repoInstance = new RegisterRepo(application);
+            repoInstance = new AppRepo(application);
         }
         return repoInstance;
     }
