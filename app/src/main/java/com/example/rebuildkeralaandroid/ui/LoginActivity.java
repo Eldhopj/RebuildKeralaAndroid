@@ -10,14 +10,14 @@ import com.example.rebuildkeralaandroid.R;
 import com.example.rebuildkeralaandroid.data.model.ApiResponse;
 import com.example.rebuildkeralaandroid.viewModel.RegisterViewModel;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "LoginActivity";
     private RegisterViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         viewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
 
         viewModel.registerUser().observe(this, new Observer<ApiResponse>() {
