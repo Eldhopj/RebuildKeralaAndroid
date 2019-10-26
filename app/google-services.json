@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "493810037678",
+    "firebase_url": "https://rebuild-kerala-315e1.firebaseio.com",
+    "project_id": "rebuild-kerala-315e1",
+    "storage_bucket": "rebuild-kerala-315e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493810037678:android:b06c50102951ff79ec4e3f",
+        "android_client_info": {
+          "package_name": "com.example.rebuildkeralaandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493810037678-or7nalbvv92qgm5f446rti5mr6uc86lf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rebuildkeralaandroid",
+            "certificate_hash": "04f14de3a4145bf6e0a9a694bfe3261e5b78c0a9"
+          }
+        },
+        {
+          "client_id": "493810037678-t53el8m0rg8upamrlbd4208qtg9pirdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZxrP7jq0tw5a8OTyxU4r-Vy6GIBibbws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493810037678-t53el8m0rg8upamrlbd4208qtg9pirdh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
