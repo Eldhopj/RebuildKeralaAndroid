@@ -30,11 +30,10 @@ public class RegisterRepo {
         return repoInstance;
     }
 
-    public MutableLiveData<ApiResponse> getMatches() {
+    public MutableLiveData<ApiResponse> getRegisterUserDetail(RegisterModel registerModel) {
         final MutableLiveData<ApiResponse> mutableLiveData = new MutableLiveData<>();
         Call<RegisterModel> call;
-        call = RetrofitClient.getInstance(application).registerUser().registerUser(new RegisterModel("eldho123",
-                "eldho@live.inx", "eldho123", "pass"));
+        call = RetrofitClient.getInstance(application).registerUser().registerUser(registerModel);
         call.enqueue(new Callback<RegisterModel>() {
             @Override
             public void onResponse(@NotNull Call<RegisterModel> call, @NotNull retrofit2.Response<RegisterModel> response) {
