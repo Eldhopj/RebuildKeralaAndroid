@@ -33,7 +33,8 @@ public class RegisterRepo {
     public MutableLiveData<ApiResponse> getMatches() {
         final MutableLiveData<ApiResponse> mutableLiveData = new MutableLiveData<>();
         Call<RegisterModel> call;
-        call = RetrofitClient.getInstance(application).registerUser().registerUser("eldho", "123456", "eldho@live.in", "eldho");
+        call = RetrofitClient.getInstance(application).registerUser().registerUser(new RegisterModel("eldho123",
+                "eldho@live.inx", "eldho123", "pass"));
         call.enqueue(new Callback<RegisterModel>() {
             @Override
             public void onResponse(@NotNull Call<RegisterModel> call, @NotNull retrofit2.Response<RegisterModel> response) {

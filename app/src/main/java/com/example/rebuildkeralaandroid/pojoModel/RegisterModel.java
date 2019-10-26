@@ -14,6 +14,15 @@ public class RegisterModel {
     @Expose
     private String name;
 
+    private String password;
+
+    public RegisterModel(String username, String email, String name, String password) {
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+    }
+
     public String getUsername() {
         return username;
     }
