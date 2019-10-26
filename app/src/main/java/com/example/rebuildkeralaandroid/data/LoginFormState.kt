@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid.ui.login
+package com.example.rebuildkeralaandroid.data
 
 /**
  * Data validation state of the login form.

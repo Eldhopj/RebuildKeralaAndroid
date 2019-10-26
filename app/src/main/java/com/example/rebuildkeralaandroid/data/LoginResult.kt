@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid.ui.login
+package com.example.rebuildkeralaandroid.data
 
 /**
  * Authentication result : success (user details) or error message.

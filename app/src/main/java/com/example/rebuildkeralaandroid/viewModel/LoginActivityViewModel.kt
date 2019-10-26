@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid.ui.login
+package com.example.rebuildkeralaandroid.viewModel
 
 import android.app.Activity
 import android.content.Intent
@@ -16,9 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.rebuildkeralaandroid.R
+import com.example.rebuildkeralaandroid.data.LoggedInUserView
 import com.example.rebuildkeralaandroid.data.model.ApiTokenModel
 import com.example.rebuildkeralaandroid.ui.MainActivity
-import com.example.rebuildkeralaandroid.viewModel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,10 +30,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val username = findViewById<EditText>(R.id.edtUserName)
-        val edtEmail = findViewById<EditText>(R.id.edtEmail)
-        edtEmail.visibility = View.GONE
-        val edtName = findViewById<EditText>(R.id.edtName)
-        edtName.visibility = View.GONE
         val password = findViewById<EditText>(R.id.edtPassword)
         val login = findViewById<Button>(R.id.btnSignin)
         val loading = findViewById<ProgressBar>(R.id.loading)

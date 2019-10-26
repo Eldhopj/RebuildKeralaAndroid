@@ -6,11 +6,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.rebuildkeralaandroid.R
+import com.example.rebuildkeralaandroid.data.LoginFormState
+import com.example.rebuildkeralaandroid.data.LoginResult
 import com.example.rebuildkeralaandroid.data.model.ApiResponse
 import com.example.rebuildkeralaandroid.data.model.LoginModel
-import com.example.rebuildkeralaandroid.repo.RegisterRepo
-import com.example.rebuildkeralaandroid.ui.login.LoginFormState
-import com.example.rebuildkeralaandroid.ui.login.LoginResult
+import com.example.rebuildkeralaandroid.repo.AppRepo
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -20,7 +20,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    private var usersRepo = RegisterRepo.getInstance(application)
+    private var usersRepo = AppRepo.getInstance(application)
 
     fun login(username: String, password: String): MutableLiveData<ApiResponse>? {
         return usersRepo.userLogin(LoginModel(username, password))

@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid.ui.login
+package com.example.rebuildkeralaandroid.data
 
 /**
  * User details post authentication that is exposed to the UI
