@@ -11,7 +11,7 @@ public class ConsoleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camp_list);
+        setContentView(R.layout.activity_console);
     }
 }
 
