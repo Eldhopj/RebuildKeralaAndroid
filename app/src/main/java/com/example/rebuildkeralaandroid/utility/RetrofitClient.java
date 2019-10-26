@@ -103,7 +103,7 @@ public class RetrofitClient {
         };
     }
 
-    public RegesterApiInterface registerUser() {
+    public RegesterApiInterface apiInterface() {
         return retrofit.create(RegesterApiInterface.class);
     }
 }

@@ -1,15 +1,18 @@
-package com.example.rebuildkeralaandroid.ui.login
+package com.example.rebuildkeralaandroid.viewModel
 
+import android.app.Application
+import android.util.Patterns
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import android.util.Patterns
-import com.example.rebuildkeralaandroid.data.LoginRepository
-import com.example.rebuildkeralaandroid.data.Result
-
 import com.example.rebuildkeralaandroid.R
+import com.example.rebuildkeralaandroid.data.model.ApiResponse
+import com.example.rebuildkeralaandroid.data.model.LoginModel
+import com.example.rebuildkeralaandroid.repo.RegisterRepo
+import com.example.rebuildkeralaandroid.ui.login.LoginFormState
+import com.example.rebuildkeralaandroid.ui.login.LoginResult
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -17,15 +20,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String) {
-        // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+    private var usersRepo = RegisterRepo.getInstance(application)
 
-        if (result is Result.Success) {
-            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
+    fun login(username: String, password: String): MutableLiveData<ApiResponse>? {
+        return usersRepo.userLogin(LoginModel(username, password))
     }
 
     fun loginDataChanged(username: String, password: String) {
@@ -49,6 +47,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+        return password.isNotEmpty()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.rebuildkeralaandroid.ui;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.rebuildkeralaandroid.R;
 import com.example.rebuildkeralaandroid.data.model.RegisterModel;
 import com.example.rebuildkeralaandroid.databinding.ActivityRegistrationBinding;
+import com.example.rebuildkeralaandroid.ui.login.LoginActivity;
 import com.example.rebuildkeralaandroid.utility.Utility;
 import com.example.rebuildkeralaandroid.viewModel.RegisterViewModel;
 
@@ -31,6 +33,10 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_registration);
         viewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+    }
+
+    public void launchLogin(View view) {
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 
     public void registerUser(View view) {
@@ -56,7 +62,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
         binding.userName.setError(null);
-            return true;
+        return true;
     }
 
     private boolean validateName() {
@@ -65,8 +71,8 @@ public class RegistrationActivity extends AppCompatActivity {
             binding.name.setError("Field can't be empty");
             return false;
         }
-            binding.name.setError(null);
-            return true;
+        binding.name.setError(null);
+        return true;
     }
 
     private boolean validateEmail() {
@@ -75,8 +81,8 @@ public class RegistrationActivity extends AppCompatActivity {
             binding.emailId.setError("Enter a valid Email Address");
             return false;
         }
-            binding.emailId.setError(null);
-            return true;
+        binding.emailId.setError(null);
+        return true;
     }
 
     private boolean validatePassword() {
@@ -95,8 +101,8 @@ public class RegistrationActivity extends AppCompatActivity {
             binding.password2.setError("Password Mismatches");
             return false;
         }
-            binding.password1.setError(null);
-            binding.password2.setError(null);
-            return true;
+        binding.password1.setError(null);
+        binding.password2.setError(null);
+        return true;
     }
 }

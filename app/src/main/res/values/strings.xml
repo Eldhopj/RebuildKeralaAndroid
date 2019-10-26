@@ -7,11 +7,13 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_password">Password must be >1 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="password">Password</string>
     <string name="name">Name</string>
-    <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="login">Login</string>
+    <string name="signin">Signin</string>
+    <string name="email">Email</string>
 </resources>
