@@ -6,21 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.ConsoleActivity">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/NewsCard"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
-        android:clickable="true"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="3dp"
-        app:strokeColor="@color/colorBlack"
-        app:strokeWidth="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
