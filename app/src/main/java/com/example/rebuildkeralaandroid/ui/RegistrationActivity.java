@@ -1,5 +1,6 @@
 package com.example.rebuildkeralaandroid.ui;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.rebuildkeralaandroid.R;
 import com.example.rebuildkeralaandroid.data.model.RegisterModel;
 import com.example.rebuildkeralaandroid.databinding.ActivityRegistrationBinding;
+import com.example.rebuildkeralaandroid.utility.Utility;
 import com.example.rebuildkeralaandroid.viewModel.RegisterViewModel;
 
 import java.util.Objects;
@@ -23,6 +25,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private String emailID;
     private String password1;
     private String name;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void registrationApi(RegisterModel registerModel) {
         viewModel.registerUser(registerModel).observe(this, apiResponse -> {
-
+            progressDialog.dismiss();
         });
     }
 
@@ -109,5 +112,6 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
         createRegistrationObject();
+        progressDialog=Utility.showLoadingDialog(this);
     }
 }
