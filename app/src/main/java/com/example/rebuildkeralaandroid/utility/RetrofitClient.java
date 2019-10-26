@@ -90,7 +90,7 @@ public class RetrofitClient {
             Request request = chain.request();
             if (!Utility.hasNetwork(context)) { // makes the network is not available only
                 CacheControl cacheControl = new CacheControl.Builder()
-                        .maxStale(5, TimeUnit.DAYS)
+                        .maxStale(7, TimeUnit.DAYS)
                         .build();
 
                 request = request.newBuilder()
