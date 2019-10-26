@@ -8,17 +8,17 @@ import androidx.lifecycle.LiveData;
 
 import com.example.rebuildkeralaandroid.data.model.ApiResponse;
 import com.example.rebuildkeralaandroid.data.model.RegisterModel;
-import com.example.rebuildkeralaandroid.repo.RegisterRepo;
+import com.example.rebuildkeralaandroid.repo.AppRepo;
 
 public class RegisterViewModel extends AndroidViewModel {
-    private final RegisterRepo usersRepo;
+    private final AppRepo appRepo;
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
-        usersRepo = RegisterRepo.getInstance(application);
+        appRepo = AppRepo.getInstance(application);
     }
 
     public LiveData<ApiResponse> registerUser(RegisterModel registerModel) {
-        return usersRepo.getRegisterUserDetail(registerModel);
+        return appRepo.getRegisterUserDetail(registerModel);
     }
 }
