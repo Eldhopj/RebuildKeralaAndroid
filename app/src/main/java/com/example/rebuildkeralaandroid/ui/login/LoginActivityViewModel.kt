@@ -1,15 +1,14 @@
-package com.example.rebuildkeralaandroid.viewModel
+package com.example.rebuildkeralaandroid.ui.login
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -19,20 +18,23 @@ import com.example.rebuildkeralaandroid.R
 import com.example.rebuildkeralaandroid.data.LoggedInUserView
 import com.example.rebuildkeralaandroid.data.model.ApiTokenModel
 import com.example.rebuildkeralaandroid.ui.MainActivity
+import com.example.rebuildkeralaandroid.utility.Utility
+import com.example.rebuildkeralaandroid.viewModel.LoginViewModel
+import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
 
-        val username = findViewById<EditText>(R.id.edtUserName)
-        val password = findViewById<EditText>(R.id.edtPassword)
+        val username = findViewById<TextInputLayout>(R.id.edtUserName)
+        val password = findViewById<TextInputLayout>(R.id.edtPassword)
         val login = findViewById<Button>(R.id.btnSignin)
-        val loading = findViewById<ProgressBar>(R.id.loading)
 
         loginViewModel = ViewModelProviders.of(this)
                 .get(LoginViewModel::class.java)
@@ -54,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
-            loading.visibility = View.GONE
+            progressDialog.dismiss()
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -67,18 +69,18 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        username.afterTextChanged {
+        username.editText?.afterTextChanged {
             loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                    username.editText?.text.toString(),
+                    password.editText?.text.toString()
             )
         }
 
-        password.apply {
+        password.editText?.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                        username.text.toString(),
-                        password.text.toString()
+                        username.editText?.text.toString(),
+                        password.editText?.text.toString()
                 )
             }
 
@@ -86,16 +88,16 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                                username.text.toString(),
-                                password.text.toString()
+                                username.editText?.text.toString(),
+                                password.editText?.text.toString()
                         )
                 }
                 false
             }
 
             login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())!!
+                progressDialog = Utility.showLoadingDialog(applicationContext)
+                loginViewModel.login(username.editText?.text.toString(), password.editText?.text.toString())!!
                         .observe(this@LoginActivity, Observer {
                             if (it.response != null) {
                                 val tokenModel = it.response as ApiTokenModel
