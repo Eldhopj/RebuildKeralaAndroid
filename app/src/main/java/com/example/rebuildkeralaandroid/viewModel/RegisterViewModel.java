@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.rebuildkeralaandroid.data.model.ApiResponse;
+import com.example.rebuildkeralaandroid.data.model.RegisterModel;
 import com.example.rebuildkeralaandroid.repo.RegisterRepo;
 
 public class RegisterViewModel extends AndroidViewModel {
@@ -17,7 +18,7 @@ public class RegisterViewModel extends AndroidViewModel {
         usersRepo = RegisterRepo.getInstance(application);
     }
 
-    public LiveData<ApiResponse> registerUser() {
-        return usersRepo.getMatches();
+    public LiveData<ApiResponse> registerUser(RegisterModel registerModel) {
+        return usersRepo.getRegisterUserDetail(registerModel);
     }
 }
