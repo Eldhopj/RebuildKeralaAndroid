@@ -16,4 +16,6 @@
     <string name="login">Login</string>
     <string name="signin">Signin</string>
     <string name="email">Email</string>
+    <string name="description">description</string>
+    <string name="title">Title</string>
 </resources>
