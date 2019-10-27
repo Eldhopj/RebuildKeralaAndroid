@@ -2,40 +2,49 @@ package org.rebuildkerala.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.rebuildkerala.R;
 import org.rebuildkerala.data.model.Details;
+import org.rebuildkerala.databinding.LayoutDetailsRecyclerViewBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DetailsRecyclerAdapter extends RecyclerView.Adapter<DetailsRecyclerAdapter.MyViewHolder> {
+public class DetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Details> detailsList;
+    private List<Details> detailsList = new ArrayList<>();
     private Context context;
 
-    public DetailsRecyclerAdapter(List<Details> detailsList, Context context) {
-        this.detailsList = detailsList;
+
+    public DetailsRecyclerAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_details_recycler_view, parent, false);
-        return new MyViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        LayoutDetailsRecyclerViewBinding binding = LayoutDetailsRecyclerViewBinding
+                .inflate(inflater,parent,false);
+        return new MyViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.titleTextView.setText(detailsList.get(position).getTitle());
-        holder.descriptionTextView.setText(detailsList.get(position).getDescription());
-        holder.rightTextView.setText(detailsList.get(position).getRightText());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        MyViewHolder myViewHolder;
+        if (holder instanceof  MyViewHolder) {
+            myViewHolder = (MyViewHolder) holder;
+            setMyViewHolder (myViewHolder,position);
+        }
+    }
+
+    private void setMyViewHolder(MyViewHolder myViewHolder, int position) {
+        myViewHolder.getBinding().title.setText(detailsList.get(position).getTitle());
+        myViewHolder.getBinding().rightText.setText(detailsList.get(position).getRightText());
+        myViewHolder.getBinding().description.setText(detailsList.get(position).getRightText());
     }
 
     @Override
@@ -43,16 +52,11 @@ public class DetailsRecyclerAdapter extends RecyclerView.Adapter<DetailsRecycler
         return detailsList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-
-        TextView titleTextView, descriptionTextView, rightTextView;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            titleTextView = itemView.findViewById(R.id.detailsLayoutTitleTextView);
-            descriptionTextView = itemView.findViewById(R.id.detailsLayoutTitleTextView);
-            rightTextView = itemView.findViewById(R.id.detailsLayoutRightTextView);
+    public void addItemRange(List<Details> items) {
+        if (items != null) {
+            int position = detailsList.size();
+            detailsList.addAll(position, items);
+            notifyItemRangeInserted(position, items.size());
         }
     }
 }
