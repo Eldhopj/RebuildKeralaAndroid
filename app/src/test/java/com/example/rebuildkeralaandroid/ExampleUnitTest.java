@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid;
+package org.rebuildkerala;
 
 import org.junit.Test;
 

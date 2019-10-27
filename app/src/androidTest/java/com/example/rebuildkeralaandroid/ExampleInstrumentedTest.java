@@ -1,4 +1,4 @@
-package com.example.rebuildkeralaandroid;
+package org.rebuildkerala;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.rebuildkeralaandroid", appContext.getPackageName());
+        assertEquals("org.rebuildkerala", appContext.getPackageName());
     }
 }
