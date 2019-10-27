@@ -7,17 +7,17 @@
     tools:context=".ui.ConsoleActivity">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/NewsCard"
+        android:id="@+id/newsCard"
+        style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        android:foregroundTint="@color/colorCardGrey"
         app:cardCornerRadius="5dp"
         app:cardElevation="3dp"
-        android:foregroundTint="@color/colorCardGrey"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.CardView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/colorGrey"
@@ -30,12 +30,13 @@
         android:layout_height="150dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        app:cardCornerRadius="2dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewsCard"
-        app:strokeColor="@color/colorGrey"
         android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newsCard"
+        app:strokeColor="@color/colorGrey"
         app:strokeWidth="1dp">
 
         <TextView
@@ -43,8 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Camps"
-            />
+            android:text="Camps" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -52,12 +52,13 @@
         android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:layout_constraintTop_toBottomOf="@+id/NewsCard"
+        app:layout_constraintTop_toBottomOf="@+id/newsCard"
         app:strokeColor="@color/colorGrey"
-        android:clickable="true"
         app:strokeWidth="1dp">
 
         <TextView
@@ -65,8 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Supply"
-            />
+            android:text="Supply" />
 
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
