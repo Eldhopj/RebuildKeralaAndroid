@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.rebuildkeralaandroid.R;
 import com.example.rebuildkeralaandroid.data.model.RegisterModel;
 import com.example.rebuildkeralaandroid.databinding.ActivityRegistrationBinding;
-import com.example.rebuildkeralaandroid.ui.login.LoginActivity;
 import com.example.rebuildkeralaandroid.utility.Utility;
 import com.example.rebuildkeralaandroid.viewModel.RegisterViewModel;
 

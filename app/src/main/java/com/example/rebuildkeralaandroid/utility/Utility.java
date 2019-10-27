@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rebuildkeralaandroid.R;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Utility {
     public static void setVerticalRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter, Context context, boolean nestedScroll) {
         if (recyclerView != null && context != null) {
@@ -35,7 +33,7 @@ public class Utility {
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 
-    public static ProgressDialog showLoadingDialog(@NotNull Context context) {
+    public static ProgressDialog showLoadingDialog(Context context) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.show();
         if (progressDialog.getWindow() != null) {
