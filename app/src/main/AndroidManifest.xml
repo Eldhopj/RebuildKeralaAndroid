@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.rebuildkeralaandroid">
+    package="com.rebuildearth.rebuildkeralaandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="org.rebuildearth.rebuildkeralaandroid.ui.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name="org.rebuildearth.rebuildkeralaandroid.ui.MainActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".ui.RegistrationActivity"
+            android:name="org.rebuildearth.rebuildkeralaandroid.ui.RegistrationActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.ConsoleActivity" android:exported="true">
+        <activity
+            android:name="org.rebuildearth.rebuildkeralaandroid.ui.ConsoleActivity"
+            android:exported="true">
 
         </activity>
     </application>
