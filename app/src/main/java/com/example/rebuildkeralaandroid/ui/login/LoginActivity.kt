@@ -1,42 +1,37 @@
 package com.example.rebuildkeralaandroid.ui.login
 
 import android.app.Activity
-import android.app.ProgressDialog
-import android.content.Intent
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+
 import com.example.rebuildkeralaandroid.R
-import com.example.rebuildkeralaandroid.data.LoggedInUserView
-import com.example.rebuildkeralaandroid.data.model.ApiTokenModel
-import com.example.rebuildkeralaandroid.ui.MainActivity
-import com.example.rebuildkeralaandroid.utility.Utility
-import com.example.rebuildkeralaandroid.viewModel.LoginViewModel
-import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
 
-        val username = findViewById<TextInputLayout>(R.id.edtUserName)
-        val password = findViewById<TextInputLayout>(R.id.edtPassword)
-        val login = findViewById<Button>(R.id.btnSignin)
+        val username = findViewById<EditText>(R.id.Username)
+        val password = findViewById<EditText>(R.id.Email)
+        val login = findViewById<Button>(R.id.login)
+        val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProviders.of(this)
+        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
                 .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
@@ -56,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
-            progressDialog.dismiss()
+            loading.visibility = View.GONE
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -69,18 +64,18 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        username.editText?.afterTextChanged {
+        username.afterTextChanged {
             loginViewModel.loginDataChanged(
-                    username.editText?.text.toString(),
-                    password.editText?.text.toString()
+                    username.text.toString(),
+                    password.text.toString()
             )
         }
 
-        password.editText?.apply {
+        password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                        username.editText?.text.toString(),
-                        password.editText?.text.toString()
+                        username.text.toString(),
+                        password.text.toString()
                 )
             }
 
@@ -88,23 +83,16 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                                username.editText?.text.toString(),
-                                password.editText?.text.toString()
+                                username.text.toString(),
+                                password.text.toString()
                         )
                 }
                 false
             }
 
             login.setOnClickListener {
-                progressDialog = Utility.showLoadingDialog(applicationContext)
-                loginViewModel.login(username.editText?.text.toString(), password.editText?.text.toString())!!
-                        .observe(this@LoginActivity, Observer {
-                            if (it.response != null) {
-                                val tokenModel = it.response as ApiTokenModel
-                                val intent = Intent(applicationContext, MainActivity::class.java)
-                                startActivity(intent)
-                            }
-                        })
+                loading.visibility = View.VISIBLE
+                loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
     }

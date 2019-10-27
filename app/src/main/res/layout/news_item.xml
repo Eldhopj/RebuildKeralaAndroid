@@ -9,7 +9,6 @@
     app:cardCornerRadius="20dp"
 
     app:cardBackgroundColor="#BDBDBD"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
