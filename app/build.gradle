@@ -14,10 +14,27 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+//    signingConfigs {
+//        release {
+//            storeFile file("release-key.keystore")
+//            storePassword 'password'
+//            keyAlias 'alias'
+//            keyPassword 'keypassword'
+//        }
+//    }
+
     buildTypes {
+//        debug {
+//            minifyEnabled true
+//            shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+            minifyEnabled true //Important step
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -61,6 +78,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation 'com.google.android.material:material:1.0.0'
-
     implementation 'com.airbnb.android:lottie:3.1.0'
 }
