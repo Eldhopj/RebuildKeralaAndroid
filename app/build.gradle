@@ -14,6 +14,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+//    signingConfigs {
+//        release {
+//            storeFile file("release-key.keystore")
+//            storePassword 'password'
+//            keyAlias 'alias'
+//            keyPassword 'keypassword'
+//        }
+//    }
+
     buildTypes {
         debug {
             minifyEnabled true
@@ -21,6 +31,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
+//            signingConfig signingConfigs.release
             minifyEnabled true //Important step
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

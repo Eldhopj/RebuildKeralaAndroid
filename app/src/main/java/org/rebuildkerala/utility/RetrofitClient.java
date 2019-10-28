@@ -2,6 +2,7 @@ package org.rebuildkerala.utility;
 
 import android.content.Context;
 
+import org.rebuildkerala.BuildConfig;
 import org.rebuildkerala.networkInterface.RegesterApiInterface;
 
 import java.io.File;
@@ -41,7 +42,7 @@ public class RetrofitClient {
 //            return chain.proceed(request);
 //        });
 
-        if (Constants.DEBUG_MODE) {
+        if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.level(HttpLoggingInterceptor.Level.BODY);
             httpClient.addInterceptor(logging);
