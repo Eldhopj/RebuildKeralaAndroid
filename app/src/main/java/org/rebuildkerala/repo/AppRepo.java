@@ -28,7 +28,11 @@ public class AppRepo {
 
     public static AppRepo getInstance(Application application) {
         if (repoInstance == null) {
-            repoInstance = new AppRepo(application);
+            synchronized (AppRepo.class) {
+                if (repoInstance == null) {
+                    repoInstance = new AppRepo(application);
+                }
+            }
         }
         return repoInstance;
     }
